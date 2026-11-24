@@ -109,10 +109,13 @@ module "vm_nic" {
   subnet_id           = module.subnets_nsg.subnet_id
   ssh_public_key      = file(var.ssh_public_key_path)
 
-  vms = {
-    linux = {}
+    vms = {
+    linux = {
+    size = "Standard_DS1_v2"
+    }
   }
 }
+
 
 module "data_disks" {
   source = "git::https://github.com/yasinwaad/stw-tf-data-disks.git?ref=v1.0.0"
